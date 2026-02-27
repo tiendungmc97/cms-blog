@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_shared_gallery_items",
+  "info": {
+    "displayName": "gallery_item"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "altText": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 70,
+      "required": true
+    },
+    "caption": {
+      "type": "blocks"
+    },
+    "headline": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 70
+    },
+    "credit": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 120
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,112 @@
+{
+  "kind": "collectionType",
+  "collectionName": "news",
+  "info": {
+    "singularName": "new",
+    "pluralName": "news",
+    "displayName": "New"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "titles": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "descriptions": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "cover": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "media": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.media",
+      "repeatable": false
+    },
+    "contents": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.rich-text",
+      "repeatable": true
+    },
+    "relative_news": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::new.new",
+      "mappedBy": "news"
+    },
+    "news": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::new.new",
+      "inversedBy": "relative_news"
+    },
+    "relativee_news1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::new.new"
+    },
+    "new": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::new.new",
+      "inversedBy": "relative_news2"
+    },
+    "relative_news2": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::new.new",
+      "mappedBy": "new"
+    },
+    "relative_news3": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::new.new"
+    }
+  }
+}
