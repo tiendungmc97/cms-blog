@@ -23,7 +23,6 @@
         }
       },
       "minLength": 5,
-      "maxLength": 70,
       "required": true
     },
     "slug": {
@@ -35,7 +34,7 @@
       },
       "targetField": "title",
       "required": true,
-      "maxLength": 70
+      "minLength": 5
     },
     "gallery": {
       "type": "component",
@@ -55,8 +54,7 @@
           "localized": true
         }
       },
-      "minLength": 10,
-      "maxLength": 1200
+      "minLength": 10
     },
     "coverImage": {
       "type": "media",

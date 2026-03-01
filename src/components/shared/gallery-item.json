@@ -25,8 +25,7 @@
     },
     "headline": {
       "type": "string",
-      "minLength": 5,
-      "maxLength": 70
+      "minLength": 5
     },
     "credit": {
       "type": "string",

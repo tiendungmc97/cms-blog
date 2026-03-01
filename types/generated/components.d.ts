@@ -20,7 +20,6 @@ export interface SharedGalleryItem extends Struct.ComponentSchema {
       }>;
     headline: Schema.Attribute.String &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 70;
         minLength: 5;
       }>;
     image: Schema.Attribute.Media<'images' | 'files'> &

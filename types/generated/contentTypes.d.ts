@@ -561,6 +561,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+    news: Schema.Attribute.Relation<'oneToMany', 'api::new.new'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -648,6 +649,7 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
     contents: Schema.Attribute.Component<'shared.rich-text', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -694,7 +696,7 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 70;
+        minLength: 5;
       }>;
     titles: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -704,7 +706,6 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 70;
         minLength: 5;
       }>;
     updatedAt: Schema.Attribute.DateTime;
@@ -746,7 +747,6 @@ export interface ApiPhotoPhoto extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 1200;
         minLength: 10;
       }>;
     gallery: Schema.Attribute.Component<'shared.gallery-item', true> &
@@ -778,7 +778,7 @@ export interface ApiPhotoPhoto extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 70;
+        minLength: 5;
       }>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -788,7 +788,6 @@ export interface ApiPhotoPhoto extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 70;
         minLength: 5;
       }>;
     updatedAt: Schema.Attribute.DateTime;

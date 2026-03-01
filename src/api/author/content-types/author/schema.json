@@ -34,6 +34,12 @@
       "relation": "oneToMany",
       "target": "api::article.article",
       "mappedBy": "author"
+    },
+    "news": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::new.new",
+      "mappedBy": "author"
     }
   }
 }

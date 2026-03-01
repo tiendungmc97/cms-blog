@@ -24,7 +24,7 @@
       },
       "targetField": "titles",
       "required": true,
-      "maxLength": 70
+      "minLength": 5
     },
     "titles": {
       "type": "string",
@@ -34,7 +34,6 @@
         }
       },
       "minLength": 5,
-      "maxLength": 70,
       "required": true
     },
     "descriptions": {
@@ -90,6 +89,12 @@
       "relation": "manyToMany",
       "target": "api::new.new",
       "mappedBy": "news_related_inverse"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "news"
     }
   }
 }
