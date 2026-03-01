@@ -688,6 +688,12 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
       'api::new.new'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID<'titles'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
