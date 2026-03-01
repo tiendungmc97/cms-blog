@@ -4,7 +4,7 @@
   "info": {
     "singularName": "new",
     "pluralName": "news",
-    "displayName": "New"
+    "displayName": "News"
   },
   "options": {
     "draftAndPublish": true
@@ -21,7 +21,10 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "targetField": "titles",
+      "required": true,
+      "maxLength": 70
     },
     "titles": {
       "type": "string",
@@ -29,7 +32,10 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "minLength": 5,
+      "maxLength": 70,
+      "required": true
     },
     "descriptions": {
       "type": "text",
@@ -37,7 +43,8 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "minLength": 10
     },
     "cover": {
       "type": "media",
@@ -49,9 +56,7 @@
       "multiple": false,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "files"
       ]
     },
     "media": {
@@ -74,39 +79,17 @@
       "component": "shared.rich-text",
       "repeatable": true
     },
-    "relative_news": {
+    "news_related_inverse": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::new.new",
-      "mappedBy": "news"
+      "inversedBy": "news_related"
     },
-    "news": {
+    "news_related": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::new.new",
-      "inversedBy": "relative_news"
-    },
-    "relativee_news1": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::new.new"
-    },
-    "new": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::new.new",
-      "inversedBy": "relative_news2"
-    },
-    "relative_news2": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::new.new",
-      "mappedBy": "new"
-    },
-    "relative_news3": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::new.new"
+      "mappedBy": "news_related_inverse"
     }
   }
 }

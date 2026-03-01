@@ -635,7 +635,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
 export interface ApiNewNew extends Struct.CollectionTypeSchema {
   collectionName: 'news';
   info: {
-    displayName: 'New';
+    displayName: 'News';
     pluralName: 'news';
     singularName: 'new';
   };
@@ -654,7 +654,7 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+    cover: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -668,6 +668,9 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
         i18n: {
           localized: true;
         };
+      }> &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 10;
       }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::new.new'>;
@@ -677,24 +680,32 @@ export interface ApiNewNew extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    new: Schema.Attribute.Relation<'oneToOne', 'api::new.new'>;
-    news: Schema.Attribute.Relation<'manyToOne', 'api::new.new'>;
+    news_related: Schema.Attribute.Relation<'manyToMany', 'api::new.new'>;
+    news_related_inverse: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::new.new'
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    relative_news: Schema.Attribute.Relation<'oneToMany', 'api::new.new'>;
-    relative_news2: Schema.Attribute.Relation<'oneToOne', 'api::new.new'>;
-    relative_news3: Schema.Attribute.Relation<'oneToMany', 'api::new.new'>;
-    relativee_news1: Schema.Attribute.Relation<'oneToOne', 'api::new.new'>;
-    slug: Schema.Attribute.UID &
+    slug: Schema.Attribute.UID<'titles'> &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
+      }> &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 70;
       }>;
     titles: Schema.Attribute.String &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
+      }> &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 70;
+        minLength: 5;
       }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
